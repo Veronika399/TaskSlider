@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>the making of sliders</title>
+    <link rel="stylesheet" href="LookSlider.css">
+</head>
+
+<body>
+    
+    <div class="header">
+        <h1>Slider</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="column left">
+            <div class="sliderOne">
+                <img src="Slike/slider-image-1.jpg">
+                <img src="Slike/slider-image-2.jpg" class="active">
+                <img src="Slike/slider-image-3.jpg">
+                <img src="Slike/slider-image-4.jpg">
+                <img src="Slike/slider-image-5.jpg">
+                <img src="Slike/slider-image-6.jpg">
+                <img src="Slike/slider-image-7.jpg">
+                <img src="Slike/slider-image-8.jpg">
+                <img src="Slike/slider-image-9.jpg">
+            </div>
+
+
+            <div class="sliderTwo">
+                <img src="Slike/slider-image-9.jpg">
+                <img src="Slike/slider-image-8.jpg" class="active">
+                <img src="Slike/slider-image-7.jpg">
+                <img src="Slike/slider-image-6.jpg">
+                <img src="Slike/slider-image-5.jpg">
+                <img src="Slike/slider-image-4.jpg">
+                <img src="Slike/slider-image-3.jpg">
+                <img src="Slike/slider-image-2.jpg">
+                <img src="Slike/slider-image-1.jpg">
+            </div>
+
+            <div class="buttons">
+                <button type="button" onclick="changeSlide('previous')" value="Previous" class="btnPre">
+                    <img src="Slike/arrow-blue-left.png">
+                </button>
+                <br>
+                <button type="button" onclick="changeSlide('next')" value="Next" class="btnNext">
+                    <img src="Slike/arrow-blue-right.png">
+                </button>
+            </div> 
+
+
+        </div>
+
+        <script 
+            src="https://code.jquery.com/jquery-3.6.3.min.js" 
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+            crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript">
+
+                function changeSlide(direction){
+                    var currentSlide1 = $('.active');
+                    var currentSlide2 = $('.active');
+                    var nextSlide1 = currentSlide1.next();
+                    var nextSlide2 = currentSlide2.next();
+                    var previousSlide1 = currentSlide1.prev();
+                    var previousSlide2 = currentSlide2.prev();
+
+                    if (direction == "next"){
+                        if(nextSlide1.length && nextSlide2.length){
+                            nextSlide1.addClass('active');
+                            nextSlide2.addClass('active');
+                        }
+                        else{ 
+                            $('.sliderOne img').first().addClass('active');
+                            $('.sliderTwo img').first().addClass('active');
+                        }
+
+                    } else{
+                        if(previousSlide1.length && previousSlide2.length){
+                            previousSlide1.addClass('active');
+                            previousSlide2.addClass('active');
+                        }
+                        else{
+                            $('.sliderOne img').last().addClass('active');
+                            $('.sliderTwo img').last().addClass('active');
+                        }
+                    }
+                    currentSlide1.removeClass('active');
+                    currentSlide2.removeClass('active'); 
+                }
+
+                    
+        </script>
+            
+        <div class="column middle">
+            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nils ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat</p>
+        </div>
+
+        <div class="column right">
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        <p>Kraj pregleda.</p>
+    </div>
+
+
+    
+</body>
+
+</html>
